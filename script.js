@@ -6,9 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'all';
     let searchQuery = '';
 
-    // Load custom apps from localStorage
-    const storedApps = JSON.parse(localStorage.getItem('hawkinsAddedApps')) || [];
-    const allApps = [...apps, ...storedApps];
+    // Load custom apps from localStorage. If empty, initialize with default apps so they are manageable.
+    let storedApps = JSON.parse(localStorage.getItem('hawkinsAddedApps'));
+    if (!storedApps || storedApps.length === 0) {
+        storedApps = [...apps];
+        localStorage.setItem('hawkinsAddedApps', JSON.stringify(storedApps));
+    }
+    const allApps = storedApps;
 
     // Load favorites
     let favoriteApps = JSON.parse(localStorage.getItem('hawkinsFavorites')) || [];

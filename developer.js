@@ -47,7 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render projects list in dashboard
     const renderCustomProjects = () => {
-        const storedApps = JSON.parse(localStorage.getItem('hawkinsAddedApps')) || [];
+        let storedApps = JSON.parse(localStorage.getItem('hawkinsAddedApps'));
+        if (!storedApps || storedApps.length === 0) {
+            // First time load or completely empty => reload defaults from data.js
+            storedApps = [...apps];
+            localStorage.setItem('hawkinsAddedApps', JSON.stringify(storedApps));
+        }
         customProjectList.innerHTML = '';
 
         if (storedApps.length === 0) {

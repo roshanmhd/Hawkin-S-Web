@@ -1,28 +1,39 @@
 :root {
-    --bg-color: #030305;
-    --card-bg: rgba(10, 15, 25, 0.6);
-    --border-color: rgba(0, 150, 255, 0.2);
-    --primary-blue: #00d2ff;
-    --secondary-blue: #3a7bd5;
+    --bg-color: #1a1a1c;
+    --card-bg: rgba(40, 40, 45, 0.6);
+    --border-color: rgba(30, 215, 96, 0.3);
+    --primary-blue: #1ed760;
+    --secondary-blue: #128c3c;
     --text-main: #f0f4f8;
-    --text-muted: #94a3b8;
-    --glow-spread: rgba(0, 210, 255, 0.4);
+    --text-muted: #a0a0a0;
+    --glow-spread: rgba(30, 215, 96, 0.25);
 }
 
 /* Light Mode Custom Properties */
 [data-theme="light"] {
-    --bg-color: #f0f4f8;
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --border-color: rgba(0, 150, 255, 0.3);
-    --primary-blue: #0066cc;
-    --secondary-blue: #004499;
+    --bg-color: #ffffff;
+    --card-bg: rgba(250, 253, 250, 0.9);
+    --border-color: rgba(30, 215, 96, 0.4);
+    --primary-blue: #1db954;
+    /* slightly darker green for better contrast in light mode */
+    --secondary-blue: #128c3c;
     --text-main: #111827;
-    --text-muted: #4b5563;
-    --glow-spread: rgba(0, 150, 255, 0.2);
+    --text-muted: #6b7280;
+    --glow-spread: rgba(30, 215, 96, 0.15);
 }
 
 [data-theme="light"] .bg-glow {
     opacity: 0.15;
+}
+
+[data-theme="light"] .sidebar::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 13 L16.5 16 L13.5 16 Z' fill='%231db954' /%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+
+[data-theme="light"] .sidebar::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='260' height='500' viewBox='0 0 260 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='-20,550 10,480 30,510 80,430 110,480 180,330 220,380 280,250 280,600 -20,600' fill='%231db954' /%3E%3Cg fill='none' stroke='%231db954' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 40,320 Q 50,335 40,350 Q 25,340 30,320 Z' /%3E%3Cpath d='M 150,320 Q 165,335 150,355 Q 135,340 140,320 Z' /%3E%3Cpath d='M 70,380 Q 80,395 70,410 Q 55,395 60,380 Z' /%3E%3Cpath d='M 35,420 Q 45,430 35,445 Q 20,435 25,420 Z' /%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.95;
 }
 
 [data-theme="light"] .app-icon {
@@ -30,6 +41,22 @@
     color: var(--primary-blue);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .main-wrapper::before {
+    opacity: 0.85;
+    background-image:
+        /* 2. Top right intersecting angles */
+        url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='200,20 80,70 200,120' fill='none' stroke='%231db954' stroke-width='2'/%3E%3Cline x1='160' y1='0' x2='160' y2='200' stroke='%231db954' stroke-width='2'/%3E%3C/svg%3E"),
+        /* 3. The giant 'M' outline across the entire background */
+        url("data:image/svg+xml,%3Csvg width='1200' height='600' viewBox='0 0 1200 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='-50,550 200,80 350,380 650,-50 900,600 1250,-50' fill='none' stroke='%231db954' stroke-width='2' stroke-linejoin='bevel' stroke-linecap='square'/%3E%3C/svg%3E"),
+        /* 5. Bottom right massive tilted rectangle */
+        url("data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='50,500 250,150 500,300 300,650' fill='%231db954'/%3E%3C/svg%3E"),
+        /* 6. Scattered tiny triangles overlay */
+        url("data:image/svg+xml,%3Csvg width='150' height='150' viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 20 L27 25 L23 25 Z M80 50 L83 56 L77 56 Z M130 90 L134 98 L126 98 Z M40 120 L42 126 L38 126 Z M110 30 L112 34 L108 34 Z M10 80 L13 85 L7 85 Z' fill='%231db954' opacity='0.7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    background-position: right top, center 50px, right bottom, center center;
+    background-size: 200px 200px, 100% 70%, 400px 500px, 150px 150px;
 }
 
 [data-theme="light"] .form-group input,
@@ -56,6 +83,37 @@ body {
     min-height: 100vh;
 }
 
+/* Sidebar Sketch Design */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 13 L16.5 16 L13.5 16 Z' fill='%231ed760' /%3E%3C/svg%3E");
+    background-size: 30px 30px;
+    mask-image: linear-gradient(to bottom, transparent 15%, black 60%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 15%, black 60%);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 260px;
+    height: 500px;
+    background-image: url("data:image/svg+xml,%3Csvg width='260' height='500' viewBox='0 0 260 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='-20,550 10,480 30,510 80,430 110,480 180,330 220,380 280,250 280,600 -20,600' fill='%231ed760' /%3E%3Cg fill='none' stroke='%231ed760' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 40,320 Q 50,335 40,350 Q 25,340 30,320 Z' /%3E%3Cpath d='M 150,320 Q 165,335 150,355 Q 135,340 140,320 Z' /%3E%3Cpath d='M 70,380 Q 80,395 70,410 Q 55,395 60,380 Z' /%3E%3Cpath d='M 35,420 Q 45,430 35,445 Q 20,435 25,420 Z' /%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
 /* Background Effects */
 .bg-glow {
     position: fixed;
@@ -68,7 +126,7 @@ body {
 .blue-glow-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(30, 215, 96, 0.15) 0%, transparent 70%);
     top: -200px;
     left: -100px;
 }
@@ -76,7 +134,7 @@ body {
 .blue-glow-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(58, 123, 213, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(18, 140, 60, 0.12) 0%, transparent 70%);
     bottom: -150px;
     right: -100px;
 }
@@ -99,9 +157,12 @@ body {
     left: 0;
     top: 0;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .sidebar-header {
+    position: relative;
+    z-index: 1;
     padding: 0 25px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 20px;
@@ -112,6 +173,8 @@ body {
 }
 
 .sidebar-menu {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     padding: 0 15px;
@@ -166,6 +229,32 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.main-wrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.8;
+    background-image:
+        /* 2. Top right intersecting angles */
+        url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='200,20 80,70 200,120' fill='none' stroke='%231ed760' stroke-width='2'/%3E%3Cline x1='160' y1='0' x2='160' y2='200' stroke='%231ed760' stroke-width='2'/%3E%3C/svg%3E"),
+        /* 3. The giant 'M' outline across the entire background */
+        url("data:image/svg+xml,%3Csvg width='1200' height='600' viewBox='0 0 1200 600' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='-50,550 200,80 350,380 650,-50 900,600 1250,-50' fill='none' stroke='%231ed760' stroke-width='2' stroke-linejoin='bevel' stroke-linecap='square'/%3E%3C/svg%3E"),
+        /* 5. Bottom right massive tilted rectangle */
+        url("data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='50,500 250,150 500,300 300,650' fill='%231ed760'/%3E%3C/svg%3E"),
+        /* 6. Scattered tiny triangles overlay */
+        url("data:image/svg+xml,%3Csvg width='150' height='150' viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 20 L27 25 L23 25 Z M80 50 L83 56 L77 56 Z M130 90 L134 98 L126 98 Z M40 120 L42 126 L38 126 Z M110 30 L112 34 L108 34 Z M10 80 L13 85 L7 85 Z' fill='%231ed760' opacity='0.7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    background-position: right top, center 50px, right bottom, center center;
+    background-size: 200px 200px, 100% 70%, 400px 500px, 150px 150px;
 }
 
 /* Navbar */

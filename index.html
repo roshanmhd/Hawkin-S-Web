@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawkin's Web - Advanced Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Theme loading script to prevent flicker -->
+    <script>
+        if (localStorage.getItem('hawkinsTheme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Background Effects -->
+    <div class="bg-glow blue-glow-1"></div>
+    <div class="bg-glow blue-glow-2"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">HAWKIN'S <span>WEB</span></h1>
+            </div>
+            <nav class="sidebar-menu" id="sidebarMenu">
+                <a href="#" class="menu-item active" data-type="all">
+                    <i class="fas fa-qrcode"></i> Dashboard
+                </a>
+                <a href="#" class="menu-item" data-type="app">
+                    <i class="fas fa-mobile-alt"></i> Apps
+                </a>
+                <a href="#" class="menu-item" data-type="web">
+                    <i class="fas fa-globe"></i> Websites
+                </a>
+                <div class="sidebar-divider"></div>
+                <a href="#" class="menu-item" data-type="favorites">
+                    <i class="fas fa-heart"></i> Favorites
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="navbar">
+                <div class="nav-container">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search apps...">
+                        <button id="searchButton"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <section class="hero">
+                    <h2>Discover My Latest Applications</h2>
+                    <p>Download the latest tools, games, and utilities created by me. Experience smooth performance and
+                        sleek
+                        UI.</p>
+                </section>
+
+                <section class="tools-section">
+                    <div class="section-header">
+                        <h3>Available Projects</h3>
+                    </div>
+
+                    <div class="app-grid" id="appGrid">
+                        <!-- Apps will be injected here by JavaScript -->
+                    </div>
+                </section>
+            </main>
+        </div> <!-- End main-wrapper -->
+    </div> <!-- End dashboard-container -->
+
+    <!-- App Details Modal -->
+    <div class="modal-overlay" id="appModalOverlay"></div>
+    <div class="app-modal" id="appModal">
+        <button class="modal-close" id="closeModalBtn"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <div class="app-icon" id="modalIcon"></div>
+            <div>
+                <h3 class="app-title" id="modalTitle" style="font-size: 28px;"></h3>
+                <div class="app-category" id="modalCategory" style="font-size: 16px;"></div>
+            </div>
+        </div>
+        <p class="app-desc" id="modalDesc" style="font-size: 16px; margin-bottom: 30px;"></p>
+        <div class="app-meta" style="font-size: 15px; margin-bottom: 30px;">
+            <span id="modalVersion"></span>
+            <span id="modalSize"></span>
+        </div>
+        <div style="display: flex; gap: 15px;">
+            <a href="#" class="submit-btn" id="modalActionBtn"
+                style="flex: 1; text-align: center; text-decoration: none;">Download</a>
+            <button class="fav-icon-btn" id="modalFavBtn"><i class="far fa-heart"></i></button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
